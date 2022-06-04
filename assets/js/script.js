@@ -28,8 +28,10 @@ function getRecipe(ingredient) {
     var recipeURL = "https://edamam-recipe-search.p.rapidapi.com/search?q=" + ingredient + "&rapidapi-key=" + apiKey;
     axios.get(recipeURL).then(function (response) {
 
-        for (let i = 0; $(".recipe").length; i++) {
-            // show recipes
+        $("#recipesList").html("");
+        // display recipe
+        for (let i = 0; i<10; i++) {
+            var recipeList = document.createElement("div");
             var recipeImg = document.createElement("img");
             var recipeSave = document.createElement("button");
             var recipeName = document.createElement("p");
@@ -37,29 +39,94 @@ function getRecipe(ingredient) {
             var recipeServes = document.createElement("p");
             var recipeDetail = document.createElement("a");
 
+
             $(recipeImg).attr({ "src": response.data.hits[i].recipe.image }).css({ 'width': '200px', 'height': '200px' });
-            $(".recipe")[i].append(recipeImg);
+            $(recipeList).append(recipeImg);
             $(recipeSave).html("Save This Recipe").attr({ "id": "save", "class": "btn btn-primary m-1 " });
-            $(".recipe")[i].append(recipeSave);
+            $(recipeList).append(recipeSave);
             $(recipeName).html(response.data.hits[i].recipe.label).attr({ "class": "m-1" });
-            $(".recipe")[i].append(recipeName);
+            $(recipeList).append(recipeName);
 
             if (response.data.hits[i].recipe.totalTime === 0) {
                 $(recipeTime).html("Cook Time: N/A").attr({ "class": "m-1" });
             } else {
                 $(recipeTime).html("Cook Time: " + response.data.hits[i].recipe.totalTime + " minutes").attr({ "class": "m-1" });
             }
-            $(".recipe")[i].append(recipeTime);
+            $(recipeList).append(recipeTime);
 
             $(recipeServes).html("Serves: " + response.data.hits[i].recipe.yield).attr({ "class": "m-1" });
-            $(".recipe")[i].append(recipeServes);
+            $(recipeList).append(recipeServes);
             $(recipeDetail).attr({ "href": response.data.hits[i].recipe.url }).html("Link :" + response.data.hits[i].recipe.source).attr({ "class": "text-warning m-1 d-block" });
-            $(".recipe")[i].append(recipeDetail);
+            $(recipeList).append(recipeDetail);
+            $(recipeList).attr({ "id": i, "class": "recipeDetails col-2 bg-info  text-white m-2 rounded" });
+            $("#recipesList").append(recipeList);
         }
     }).catch(function (err) {
         console.log(err);
     })
 };
+
+// save recipe
+$(document).on("click", "#save", function () {
+    $(this).html("Saved!").attr({ "class": "btn btn-success m-1" });
+    var recipeName = $(this).parent().find("p")[0].innerHTML;
+    var recipeImg = $(this).parent().find("img")[0].src;
+    var recipeURL = $(this).parent().find("a")[0].href;
+    var recipeTime = $(this).parent().find("p")[1].innerHTML;
+    var recipeServes = $(this).parent().find("p")[2].innerHTML;
+
+    var recipe = {
+        name: recipeName,
+        img: recipeImg,
+        url: recipeURL,
+        time: recipeTime,
+        serves: recipeServes
+    }
+
+    localStorage.setItem(recipeName, JSON.stringify(recipe));
+})
+
+// show saved recipes
+$("#viewSavedRecipe").on("click", function () {
+    $("#savedRecipes").removeClass("d-none");
+    $("#contributors").addClass("d-none");
+    $("#start").addClass("d-none");
+    $("#weather").addClass("d-none");
+    $("#recipes").addClass("d-none");
+
+    $("#showSavedRecipes").html("");
+    for (let i = 0; i < localStorage.length; i++) {
+        var recipeName = localStorage.key(i);
+        var recipe = JSON.parse(localStorage.getItem(recipeName));
+
+
+        var savedRecipe = document.createElement("div");
+        var savedRecipeImg = document.createElement("img");
+        var savedRecipeName = document.createElement("p");
+        var savedRecipeTime = document.createElement("p");
+        var savedRecipeServes = document.createElement("p");
+        var savedRecipeDetail = document.createElement("a");
+
+        $(savedRecipeImg).attr({ "src": recipe.img }).css({ 'width': '150px', 'height': '150px' });
+        $(savedRecipe).append(savedRecipeImg);
+        $(savedRecipeName).html(recipe.name).attr({ "class": "m-1" });
+        $(savedRecipe).append(savedRecipeName);
+        $(savedRecipeTime).html("Cook Time: " + recipe.time).attr({ "class": "m-1" });
+        $(savedRecipe).append(savedRecipeTime);
+        $(savedRecipeServes).html("Serves: " + recipe.serves).attr({ "class": "m-1" });
+        $(savedRecipe).append(savedRecipeServes);
+        $(savedRecipeDetail).attr({ "href": recipe.url }).html("Link to Recipe").attr({ "class": "text-warning m-1 d-block" });
+        $(savedRecipe).append(savedRecipeDetail);
+        $(savedRecipe).attr({ "id": i, "class": "savedRecipe col-2 bg-info  text-white m-2 rounded" });
+        $("#showSavedRecipes").append(savedRecipe);
+    }
+})
+
+// clear all saved recipes
+$("#clear").on("click", function () {
+    localStorage.clear();
+    $("#showSavedRecipes").empty();
+})
 
 // search for weather
 $('#search').on("click", function () {
@@ -105,62 +172,3 @@ $("#viewContributors").on("click", function () {
     $("#savedRecipes").addClass("d-none");
 })
 
-// save recipe
-$(document).on("click", "#save", function () {
-    $(this).html("Saved!").attr({ "class": "btn btn-success m-1" });
-    var recipeName = $(this).parent().find("p")[0].innerHTML;
-    var recipeImg = $(this).parent().find("img")[0].src;
-    var recipeURL = $(this).parent().find("a")[0].href;
-    var recipeTime = $(this).parent().find("p")[1].innerHTML;
-    var recipeServes = $(this).parent().find("p")[2].innerHTML;
-
-    var recipe = {
-        name: recipeName,
-        img: recipeImg,
-        url: recipeURL,
-        time: recipeTime,
-        serves: recipeServes
-    }
-
-    localStorage.setItem(recipeName, JSON.stringify(recipe));
-})
-
-// show saved recipes
-$("#viewSavedRecipe").on("click", function () {
-    $("#savedRecipes").removeClass("d-none");
-    $("#contributors").addClass("d-none");
-    $("#start").addClass("d-none");
-    $("#weather").addClass("d-none");
-    $("#recipes").addClass("d-none");
-    for (let i = 0; i < localStorage.length; i++) {
-        var recipeName = localStorage.key(i);
-        var recipe = JSON.parse(localStorage.getItem(recipeName));
-
-
-        var savedRecipe = document.createElement("div");
-        var savedRecipeImg = document.createElement("img");
-        var savedRecipeName = document.createElement("p");
-        var savedRecipeTime = document.createElement("p");
-        var savedRecipeServes = document.createElement("p");
-        var savedRecipeDetail = document.createElement("a");
-
-        $(savedRecipeImg).attr({ "src": recipe.img }).css({ 'width': '150px', 'height': '150px' });
-        $(savedRecipe).append(savedRecipeImg);
-        $(savedRecipeName).html(recipe.name).attr({ "class": "m-1" });
-        $(savedRecipe).append(savedRecipeName);
-        $(savedRecipeTime).html("Cook Time: " + recipe.time).attr({ "class": "m-1" });
-        $(savedRecipe).append(savedRecipeTime);
-        $(savedRecipeServes).html("Serves: " + recipe.serves).attr({ "class": "m-1" });
-        $(savedRecipe).append(savedRecipeServes);
-        $(savedRecipeDetail).attr({ "href": recipe.url }).html("Link to Recipe").attr({ "class": "text-warning m-1 d-block" });
-        $(savedRecipe).append(savedRecipeDetail);
-        $(savedRecipe).attr({ "id": i, "class": "savedRecipe col-2 bg-info  text-white m-2 rounded" });
-        $("#showSavedRecipes").append(savedRecipe);
-    }
-})
-
-// clear all saved recipes
-$("#clear").on("click", function () {
-    localStorage.clear();
-    $("#showSavedRecipes").empty();
-})

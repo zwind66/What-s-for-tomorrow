@@ -16,7 +16,7 @@
     <!--header-->
     <header class="container mt-3 row col-12 justify-content-around">
         <div class="h4 text-primary">
-            <a id="viewWeather">View tomorrow weather </a>
+            <a id="viewWeather">view tomorrow weather </a>
         </div>
         <div class="h4 text-primary">
             <a id="viewContributors">Contributors </a>
@@ -34,11 +34,11 @@
 
     <!--weather-->
     <section id="weather" class="d-none ">
-        <div class="container col-lg-7 mt-5 text-center ">
-            <h1 class="h1 mb-5 font-weight-bold"> Let's confirm the weather for tomorrow</h1>
+        <div class="container mt-5 text-center ">
+            <h1 class="h1 mb-5 font-weight-bold"> Eat out or Cook at home ? See Weather Tomorrow</h1>
         </div>
         <div class="container col-lg-7 mt-5 text-center">
-            <h3 class=" text-center mt-1">Search for a City</h3>
+            <h3 class=" text-center mt-1">Search weather for a City</h3>
             <div class="input mb-3">
                 <input id="enterCity" type="text" class="form-control text-center" placeholder="Enter a city"
                     aria-label="Enter a city">
@@ -65,31 +65,22 @@
     <!--recipe-->
     <section id="recipes" class="d-none">
         <div class="container col-10 mt-5 text-center ">
-            <h1 class="h1 mb-5 font-weight-bold"> Let's confirm main ingredient in your meal</h1>
+            <h1 class="h1 mb-5 font-weight-bold"> Let's cook some food </h1>
         </div>
         <div class="container col-5 mt-5 text-center">
-            <h3 class=" text-center mt-1">main ingredient</h3>
+            <h3 class=" text-center mt-1">choose main ingredient</h3>
             <div class="input mb-3">
                 <input id="enterIngredient" type="text" class="form-control text-center" placeholder="enter ingredient"
                     aria-label="enter ingredient">
-                <button class="btn col-3 btn-primary mt-3" type="button" id="add">
+                <button class="btn btn-primary mt-3" type="button" id="add">
                     search recipes
                 </button>
             </div>
         </div>
 
         <!--show recipes -->
-        <div class="container col-12 mt-5 text-center row d-flex justify-content-center">
-            <div class="recipe col-2 bg-info  text-white m-2 rounded"></div>
-            <div class="recipe col-2 bg-info  text-white m-2 rounded"></div>
-            <div class="recipe col-2 bg-info  text-white m-2 rounded"></div>
-            <div class="recipe col-2 bg-info  text-white m-2 rounded"></div>
-            <div class="recipe col-2 bg-info  text-white m-2 rounded"></div>
-            <div class="recipe col-2 bg-info  text-white m-2 rounded"></div>
-            <div class="recipe col-2 bg-info  text-white m-2 rounded"></div>
-            <div class="recipe col-2 bg-info  text-white m-2 rounded"></div>
-            <div class="recipe col-2 bg-info  text-white m-2 rounded"></div>
-            <div class="recipe col-2 bg-info  text-white m-2 rounded"></div>
+        <div id=recipesList class="container col-12 mt-5 text-center row d-flex justify-content-center">
+            <!--show recipe list-->
         </div>
     </section>
 
@@ -113,8 +104,7 @@
             <!-- Show saved recipes-->
         </div>
         
-        <button class="btn col-2 btn-danger mt-3 " type="button" id="clear">clear</button>
-       
+        <button class="btn col-3 btn-danger mt-3 " type="button" id="clear">clear all recipes </button>  
     </section>
 
     <!--linking js-->

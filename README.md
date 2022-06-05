@@ -32,7 +32,10 @@ THEN recipes will store in localStorage
 
 The following animation demonstrates the application functionality:
 
-[](./Assets/img/screenshot.png)
+![1](./assets/img/1.png)
+![2](./assets/img/2.png)
+![3](./assets/img/3.png)
+
 
 ## 💡💡💡Finished work
 
@@ -53,7 +56,7 @@ You are required to submit the following for review:
 ## Built With
 
 * HTML
-* CSS
+* Bulma/CSS
 * JS
 * jQuery
 * APIs

@@ -5,6 +5,7 @@ var apiKey = "5d5d79c2c0msh5d8b76850693b7ep1e1c05jsn7b1b3e77821b";
 
 // get weather from open weather api
 function getWeather(cityName) {
+    $('#check').removeClass('is-hidden');
     var URL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + APIKey;
     axios.get(URL).then(function (response) {
         // display next day's weather
@@ -40,25 +41,23 @@ function getRecipe(ingredient) {
             var recipeDetail = document.createElement("a");
 
 
-            $(recipeImg).attr({ "src": response.data.hits[i].recipe.image }).css({ 'width': '200px', 'height': '200px' });
+            $(recipeImg).attr({ "src": response.data.hits[i].recipe.image}).css({ 'width': '200px', 'height': '200px' });
             $(recipeList).append(recipeImg);
-            $(recipeSave).html("Save This Recipe").attr({ "id": "save", "class": "btn btn-primary m-1 " });
+            $(recipeSave).html("Save This Recipe").attr({ "id": "save", "class": "button is-info is-rounded m-1 ","type": "button" });
             $(recipeList).append(recipeSave);
             $(recipeName).html(response.data.hits[i].recipe.label).attr({ "class": "m-1" });
             $(recipeList).append(recipeName);
-
             if (response.data.hits[i].recipe.totalTime === 0) {
                 $(recipeTime).html("Cook Time: N/A").attr({ "class": "m-1" });
             } else {
                 $(recipeTime).html("Cook Time: " + response.data.hits[i].recipe.totalTime + " minutes").attr({ "class": "m-1" });
             }
             $(recipeList).append(recipeTime);
-
             $(recipeServes).html("Serves: " + response.data.hits[i].recipe.yield).attr({ "class": "m-1" });
             $(recipeList).append(recipeServes);
             $(recipeDetail).attr({ "href": response.data.hits[i].recipe.url }).html("Link :" + response.data.hits[i].recipe.source).attr({ "class": "text-warning m-1 d-block" });
             $(recipeList).append(recipeDetail);
-            $(recipeList).attr({ "id": i, "class": "recipeDetails col-2 bg-info  text-white m-2 rounded" });
+            $(recipeList).attr({ "id": i, "class": "column is-2 is-rounded has-background-primary has-text-light has-text-weight-bold m-2" });
             $("#recipesList").append(recipeList);
         }
     }).catch(function (err) {
@@ -68,7 +67,7 @@ function getRecipe(ingredient) {
 
 // save recipe
 $(document).on("click", "#save", function () {
-    $(this).html("Saved!").attr({ "class": "btn btn-success m-1" });
+    $(this).html("Saved!").attr({ "class": "button is-rounded is-success m-1", "type": "button" });
     var recipeName = $(this).parent().find("p")[0].innerHTML;
     var recipeImg = $(this).parent().find("img")[0].src;
     var recipeURL = $(this).parent().find("a")[0].href;
@@ -88,11 +87,11 @@ $(document).on("click", "#save", function () {
 
 // show saved recipes
 $("#viewSavedRecipe").on("click", function () {
-    $("#savedRecipes").removeClass("d-none");
-    $("#contributors").addClass("d-none");
-    $("#start").addClass("d-none");
-    $("#weather").addClass("d-none");
-    $("#recipes").addClass("d-none");
+    $("#savedRecipes").removeClass("is-hidden");
+    $("#contributors").addClass("is-hidden");
+    $("#start").addClass("is-hidden");
+    $("#weather").addClass("is-hidden");
+    $("#recipes").addClass("is-hidden");
 
     $("#showSavedRecipes").html("");
     for (let i = 0; i < localStorage.length; i++) {
@@ -107,7 +106,7 @@ $("#viewSavedRecipe").on("click", function () {
         var savedRecipeServes = document.createElement("p");
         var savedRecipeDetail = document.createElement("a");
 
-        $(savedRecipeImg).attr({ "src": recipe.img }).css({ 'width': '150px', 'height': '150px' });
+        $(savedRecipeImg).attr({ "src": recipe.img}).css({ 'width': '150px', 'height': '150px' });
         $(savedRecipe).append(savedRecipeImg);
         $(savedRecipeName).html(recipe.name).attr({ "class": "m-1" });
         $(savedRecipe).append(savedRecipeName);
@@ -117,7 +116,7 @@ $("#viewSavedRecipe").on("click", function () {
         $(savedRecipe).append(savedRecipeServes);
         $(savedRecipeDetail).attr({ "href": recipe.url }).html("Link to Recipe").attr({ "class": "text-warning m-1 d-block" });
         $(savedRecipe).append(savedRecipeDetail);
-        $(savedRecipe).attr({ "id": i, "class": "savedRecipe col-2 bg-info  text-white m-2 rounded" });
+        $(savedRecipe).attr({ "id": i, "class": "column is-2 is-rounded has-background-primary has-text-light has-text-weight-bold m-2" });
         $("#showSavedRecipes").append(savedRecipe);
     }
 })
@@ -142,33 +141,33 @@ $('#add').on("click", function () {
 
 // show weather page
 $('#start-btn').on("click", function () {
-    $("#start").addClass("d-none");
-    $("#weather").removeClass("d-none");
-    $("#contributors").addClass("d-none");
-    $("#savedRecipes").addClass("d-none");
+    $("#start").addClass("is-hidden");
+    $("#weather").removeClass("is-hidden");
+    $("#contributors").addClass("is-hidden");
+    $("#savedRecipes").addClass("is-hidden");
 });
 $("#viewWeather").on("click", function () {
-    $("#start").addClass("d-none");
-    $("#weather").removeClass("d-none");
-    $("#contributors").addClass("d-none");
-    $("#recipes").addClass("d-none");
-    $("#savedRecipes").addClass("d-none");
+    $("#start").addClass("is-hidden");
+    $("#weather").removeClass("is-hidden");
+    $("#contributors").addClass("is-hidden");
+    $("#recipes").addClass("is-hidden");
+    $("#savedRecipes").addClass("is-hidden");
 })
 
 // show recipe page
 $("#making").on("click", function () {
-    $("#weather").addClass("d-none");
-    $("#contributors").addClass("d-none");
-    $("#recipes").removeClass("d-none");
-    $("#savedRecipes").addClass("d-none");
+    $("#weather").addClass("is-hidden");
+    $("#contributors").addClass("is-hidden");
+    $("#recipes").removeClass("is-hidden");
+    $("#savedRecipes").addClass("is-hidden");
 })
 
 // show contributors page
 $("#viewContributors").on("click", function () {
-    $("#contributors").removeClass("d-none");
-    $("#start").addClass("d-none");
-    $("#weather").addClass("d-none");
-    $("#recipes").addClass("d-none");
-    $("#savedRecipes").addClass("d-none");
+    $("#contributors").removeClass("is-hidden");
+    $("#start").addClass("is-hidden");
+    $("#weather").addClass("is-hidden");
+    $("#recipes").addClass("is-hidden");
+    $("#savedRecipes").addClass("is-hidden");
 })
 

@@ -31,7 +31,7 @@ function getRecipe(ingredient) {
 
         $("#recipesList").html("");
         // display recipe
-        for (let i = 0; i<10; i++) {
+        for (let i = 0; i < 10; i++) {
             var recipeList = document.createElement("div");
             var recipeImg = document.createElement("img");
             var recipeSave = document.createElement("button");
@@ -41,9 +41,9 @@ function getRecipe(ingredient) {
             var recipeDetail = document.createElement("a");
 
 
-            $(recipeImg).attr({ "src": response.data.hits[i].recipe.image}).css({ 'width': '200px', 'height': '200px' });
+            $(recipeImg).attr({ "src": response.data.hits[i].recipe.image }).css({ 'width': '200px', 'height': '200px' });
             $(recipeList).append(recipeImg);
-            $(recipeSave).html("Save This Recipe").attr({ "id": "save", "class": "button is-info is-rounded m-1 ","type": "button" });
+            $(recipeSave).html("Save This Recipe").attr({ "id": "save", "class": "button is-info is-rounded m-1 ", "type": "button" });
             $(recipeList).append(recipeSave);
             $(recipeName).html(response.data.hits[i].recipe.label).attr({ "class": "m-1" });
             $(recipeList).append(recipeName);
@@ -106,7 +106,7 @@ $("#viewSavedRecipe").on("click", function () {
         var savedRecipeServes = document.createElement("p");
         var savedRecipeDetail = document.createElement("a");
 
-        $(savedRecipeImg).attr({ "src": recipe.img}).css({ 'width': '150px', 'height': '150px' });
+        $(savedRecipeImg).attr({ "src": recipe.img }).css({ 'width': '150px', 'height': '150px' });
         $(savedRecipe).append(savedRecipeImg);
         $(savedRecipeName).html(recipe.name).attr({ "class": "m-1" });
         $(savedRecipe).append(savedRecipeName);

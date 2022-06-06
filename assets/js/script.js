@@ -173,3 +173,8 @@ $("#viewContributors").on("click", function () {
     $("#savedRecipes").addClass("is-hidden");
 })
 
+// moblie menu
+$("#navbarBurger").on("click", function () { 
+    $("#navbarBurger").toggleClass("is-active");
+    $("#navbarBasic").toggleClass("is-active");  
+})

@@ -15,7 +15,7 @@ function getWeather(cityName) {
         var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + cityID + "&units=imperial&appid=" + APIKey;
         axios.get(forecastURL).then(function (response) {
             $("#cityWeather").html(response.data.list[6].weather[0].description);
-            $("#weather-img").attr({ "src": "http://openweathermap.org/img/wn/" + response.data.list[6].weather[0].icon + "@2x.png", "alt": "Weather icon" });
+            $("#weather-img").attr({ "src": "https://openweathermap.org/img/wn/" + response.data.list[6].weather[0].icon + "@2x.png", "alt": "Weather icon" });
             $("#temperature").html("Temp: " + Math.floor(response.data.list[6].main.temp) + " °F");
             $("#wind").html("Wind: " + response.data.list[6].wind.speed + " MPH");
             $("#humidity").html("Humidity: " + response.data.list[6].main.humidity + "%");

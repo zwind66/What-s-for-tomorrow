@@ -43,6 +43,8 @@ The following animation demonstrates the application functionality:
 
 * [The Link of the GitHub repository.](https://github.com/zwind66/What-s-for-tomorrow.git)
 
+* [The URL of the portfolio, with project 1 added to it..](https://zwind66.github.io/Shuai-s-Assignment-2/)
+
 
 ## Review
 

@@ -36,14 +36,15 @@ The following animation demonstrates the application functionality:
 ![2](./assets/img/2.png)
 ![3](./assets/img/3.png)
 
-
+## 💡💡PPT
+* [The Link of the  Project Presentation Template.](https://docs.google.com/presentation/d/1szP9geOOPW_3Uwz1LrN62l_TqHUICzs4FHVVE6gQoP8/edit#slide=id.p)
 ## 💡💡💡Finished work
 
 * [The Link of the deployed application.](https://zwind66.github.io/What-s-for-tomorrow/)
 
 * [The Link of the GitHub repository.](https://github.com/zwind66/What-s-for-tomorrow.git)
 
-* [The URL of the portfolio, with project 1 added to it..](https://zwind66.github.io/Shuai-s-Assignment-2/)
+* [The URL of the portfolio, with project 1 added to it.](https://zwind66.github.io/Shuai-s-Assignment-2/)
 
 
 ## Review

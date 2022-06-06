@@ -70,11 +70,11 @@ function getRecipe(ingredient) {
 // save recipe
 $(document).on("click", "#save", function () {
     $(this).html("Saved!").attr({ "class": "button is-rounded is-success m-1", "type": "button" });
-    var recipeName = $(this).parent().find("p")[0].innerHTML;
-    var recipeImg = $(this).parent().find("img")[0].src;
-    var recipeURL = $(this).parent().find("a")[0].href;
-    var recipeTime = $(this).parent().find("p")[1].innerHTML;
-    var recipeServes = $(this).parent().find("p")[2].innerHTML;
+    var recipeName = $(this).parent().parent().find("p")[0].innerHTML;
+    var recipeImg = $(this).parent().parent().find("img")[0].src;
+    var recipeURL = $(this).parent().parent().find("a")[0].href;
+    var recipeTime = $(this).parent().parent().find("p")[1].innerHTML;
+    var recipeServes = $(this).parent().parent().find("p")[2].innerHTML;
 
     var recipe = {
         name: recipeName,

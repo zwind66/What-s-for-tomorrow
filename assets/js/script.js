@@ -25,6 +25,7 @@ function getWeather(cityName) {
     })
 };
 
+// get recipe from open recipe api
 function getRecipe(ingredient) {
     var recipeURL = "https://edamam-recipe-search.p.rapidapi.com/search?q=" + ingredient + "&rapidapi-key=" + apiKey;
     axios.get(recipeURL).then(function (response) {
@@ -41,9 +42,9 @@ function getRecipe(ingredient) {
             var recipeDetail = document.createElement("a");
             var recipeSaveBlocked = document.createElement("div");
 
-            $(recipeSaveBlocked).attr({"class": "block" })
+            $(recipeSaveBlocked).attr({ "class": "block" })
             $(recipeSaveBlocked).append(recipeSave);
-            $(recipeImg).attr({ "src": response.data.hits[i].recipe.image,"class": "block" }).css({ 'width': 'auto', 'height': 'auto' });
+            $(recipeImg).attr({ "src": response.data.hits[i].recipe.image, "class": "block" }).css({ 'width': 'auto', 'height': 'auto' });
             $(recipeList).append(recipeImg);
             $(recipeSave).html("Save This Recipe").attr({ "id": "save", "class": "button is-info is-rounded m-1 block ", "type": "button" });
             $(recipeList).append(recipeSaveBlocked);
@@ -174,7 +175,7 @@ $("#viewContributors").on("click", function () {
 })
 
 // moblie menu
-$("#navbarBurger").on("click", function () { 
+$("#navbarBurger").on("click", function () {
     $("#navbarBurger").toggleClass("is-active");
-    $("#navbarBasic").toggleClass("is-active");  
+    $("#navbarBasic").toggleClass("is-active");
 })

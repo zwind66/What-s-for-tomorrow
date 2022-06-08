@@ -114,7 +114,7 @@ $("#viewSavedRecipe").on("click", function () {
         $(savedRecipe).append(savedRecipeImg);
         $(savedRecipeName).html(recipe.name).attr({ "class": "m-1" });
         $(savedRecipe).append(savedRecipeName);
-        $(savedRecipeTime).html("Cook Time: " + recipe.time).attr({ "class": "m-1" });
+        $(savedRecipeTime).html(recipe.time).attr({ "class": "m-1" });
         $(savedRecipe).append(savedRecipeTime);
         $(savedRecipeServes).html(recipe.serves).attr({ "class": "m-1" });
         $(savedRecipe).append(savedRecipeServes);

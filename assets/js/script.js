@@ -116,7 +116,7 @@ $("#viewSavedRecipe").on("click", function () {
         $(savedRecipe).append(savedRecipeName);
         $(savedRecipeTime).html("Cook Time: " + recipe.time).attr({ "class": "m-1" });
         $(savedRecipe).append(savedRecipeTime);
-        $(savedRecipeServes).html("Serves: " + recipe.serves).attr({ "class": "m-1" });
+        $(savedRecipeServes).html(recipe.serves).attr({ "class": "m-1" });
         $(savedRecipe).append(savedRecipeServes);
         $(savedRecipeDetail).attr({ "href": recipe.url }).html("Link to Recipe").attr({ "class": "text-warning m-1 d-block" });
         $(savedRecipe).append(savedRecipeDetail);

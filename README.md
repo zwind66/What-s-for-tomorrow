@@ -65,8 +65,4 @@ You are required to submit the following for review:
 * APIs
 
 ## Contact
-
-* Jim Davis - [@jdavi241](https://github.com/jdavi241)
 * Shuai Zuo - [@zwind66](https://github.com/zwind66)
-* Austin Green -[@AustinGreenCode](https://github.com/AustinGreenCode)
-* Brandon Martin - [@](https://github.com/)
